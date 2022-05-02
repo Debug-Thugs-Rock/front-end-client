@@ -11,6 +11,8 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreatePost from './components/posts/CreatePost'
+import IndexPost from './components/posts/IndexPost'
+import ShowPost from './components/posts/ShowPost'
 
 class App extends Component {
   constructor (props) {
@@ -91,6 +93,16 @@ class App extends Component {
             user={user}
             path='/home'
             render={() => <CreatePost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/home'
+            render={() => <IndexPost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/posts/:id'
+            render={() => <ShowPost msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

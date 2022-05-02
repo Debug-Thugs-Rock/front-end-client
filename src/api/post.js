@@ -13,3 +13,32 @@ export const createPost = (data, user) => {
     }
   })
 }
+
+export const indexPosts = (user) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/posts/',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+export const showPost = (id, user) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/posts/' + id,
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+
+export const deletePost = (id, user) => {
+  return axios({
+    method: 'DELETE',
+    url: apiUrl + '/posts/' + id,
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
