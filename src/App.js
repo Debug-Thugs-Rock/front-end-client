@@ -13,6 +13,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreatePost from './components/posts/CreatePost'
 import IndexPost from './components/posts/IndexPost'
 import ShowPost from './components/posts/ShowPost'
+import UpdatePost from './components/posts/UpdatePost'
 
 class App extends Component {
   constructor (props) {
@@ -103,6 +104,11 @@ class App extends Component {
             user={user}
             path='/posts/:id'
             render={() => <ShowPost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/posts/:id/edit'
+            render={() => <UpdatePost msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

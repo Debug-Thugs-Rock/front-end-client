@@ -58,7 +58,6 @@ render () {
   if (this.state.post === null) {
     return 'Loading...'
   }
-  console.log(this.state)
   const { title, text, owner } = this.state.post
   const { user, history, match } = this.props
   return (
