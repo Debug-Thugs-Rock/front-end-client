@@ -23,8 +23,9 @@ class ShowPost extends Component {
         title: res.data.posts.title,
         text: res.data.posts.text,
         likes: res.data.posts.likes,
+        updated: true,
         owner: res.data.posts.owner,
-        updated: true
+        commentCopy: res.data.posts.comments
       }))
       .then(() => {
         msgAlert({
@@ -72,7 +73,6 @@ upvote = () => {
 // save the users likes when they leave the page
 componentWillUnmount () {
   const { match, user } = this.props
-
   updatePost(this.state, match.params.id, user)
 }
 
@@ -87,14 +87,18 @@ render () {
       <h3>Viewing Post:</h3>
       <h4>{this.state.title}</h4>
       <p>{this.state.text}</p>
+      <p>Comments:</p>
+      { this.state.commentCopy?.map(comment => <div key= { comment._id }>{ comment.comment }</div>)}
+
       <p>bubbled {this.state.likes}x</p>
       {user._id === this.state.owner && (
         <>
           <Button onClick={this.handleDelete}>Delete</Button>
           <Button onClick={() => history.push(`/posts/${match.params.id}/edit`)}>Update</Button>
-          <Button onClick= {this.upvote}>∘˚˳°</Button>
         </>
       )}
+      <Button onClick={() => history.push(`/posts/${match.params.id}/comments`)}>Comment</Button>
+      <Button onClick= {this.upvote}>∘˚˳°</Button>
     </>
   )
 }

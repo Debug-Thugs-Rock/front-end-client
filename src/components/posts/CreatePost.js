@@ -13,7 +13,8 @@ class CreatePost extends Component {
       title: '',
       text: '',
 			owner: '',
-			likes: 0
+			likes: 0,
+			comments: []
     }
   }
 

@@ -42,10 +42,24 @@ export const deletePost = (id, user) => {
     }
   })
 }
+
 export const updatePost = (data, id, user) => {
   return axios({
     method: 'PATCH',
     url: apiUrl + '/posts/' + id,
+    data: {
+      post: data
+    },
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+
+export const createComment = (data, id, user) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/posts/' + id + '/comments',
     data: {
       post: data
     },
