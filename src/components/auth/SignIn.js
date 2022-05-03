@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
-
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
@@ -13,6 +12,7 @@ class SignIn extends Component {
 
     this.state = {
       email: '',
+      username: '',
       password: ''
     }
   }
@@ -26,7 +26,6 @@ onSignIn = (event) => {
   event.preventDefault()
 
   const { msgAlert, history, setUser } = this.props
-
   signIn(this.state)
     .then((res) => setUser(res.data.user))
     .then(() =>
@@ -38,7 +37,7 @@ onSignIn = (event) => {
     )
     .then(() => history.push('/'))
     .catch((error) => {
-      this.setState({ email: '', password: '' })
+      this.setState({ email: '', username: '', password: '' })
       msgAlert({
         heading: 'Sign In Failed with error: ' + error.message,
         message: signInFailure,
@@ -48,7 +47,7 @@ onSignIn = (event) => {
 }
 
 render () {
-  const { email, password } = this.state
+  const { email, username, password } = this.state
 
   return (
     <div className='row'>
@@ -66,6 +65,17 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
+          <Form.Group controlId='username'>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              type='username'
+              name='username'
+              value={username}
+              placeholder='Enter Username'
+              onChange={this.handleChange}
+            />
+          </Form.Group>
           <Form.Group controlId='password'>
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -77,7 +87,8 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit'>Submit
+          </Button>
         </Form>
       </div>
     </div>

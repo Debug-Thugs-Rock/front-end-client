@@ -3,7 +3,7 @@ import { indexPosts, deletePost } from '../../api/post'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
-class IndexPost extends Component {
+class ProfileIndexPost extends Component {
   constructor (props) {
     super(props)
 
@@ -56,7 +56,6 @@ handleDelete = () => {
 
 render () {
   const { posts } = this.state
-  console.log(this.state)
 
   if (posts === null) {
     return 'Loading...'
@@ -67,7 +66,8 @@ render () {
     postJSX = 'No posts, create some'
   } else {
     // eslint-disable-next-line array-callback-return
-    postJSX = posts.map((post) => (
+    // eslint-disable-next-line eqeqeq
+    postJSX = posts.filter(post => post.owner == this.props.user._id).map((post) => (
       <div key={post._id}>
         <h3>{this.props.user.username}</h3>
         <h4>{post.title}</h4>
@@ -80,11 +80,11 @@ render () {
   }
   return (
     <>
-      <h3>Bubble Feed</h3>
+      <h3>Your Bubble Feed</h3>
       <ul>{postJSX}</ul>
     </>
   )
 }
 }
 
-export default IndexPost
+export default ProfileIndexPost

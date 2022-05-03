@@ -50,7 +50,7 @@ onSignUp = (event) => {
 }
 
 render () {
-  const { email, password, passwordConfirmation } = this.state
+  const { email, username, password, passwordConfirmation } = this.state
 
   return (
     <div className='row'>
@@ -65,6 +65,17 @@ render () {
               name='email'
               value={email}
               placeholder='Enter email'
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId='username'>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              type='username'
+              name='username'
+              value={username}
+              placeholder='Create Username'
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -90,7 +101,8 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit'>Submit
+          </Button>
         </Form>
       </div>
     </div>

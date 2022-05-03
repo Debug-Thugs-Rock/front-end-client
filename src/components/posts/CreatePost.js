@@ -27,6 +27,7 @@ class CreatePost extends Component {
 	event.target.reset()
 
 	const { user, msgAlert } = this.props
+	console.log(this.state)
 
 	createPost(this.state, user)
     .then(() => {
