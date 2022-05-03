@@ -18,6 +18,7 @@ import ProfileIndexPost from './components/posts/ProfileIndexPost'
 import CreateComment from './components/comments/CreateComment'
 import UsersList from './components/UsersList/UsersList'
 import ProfileIndexPost from './components/posts/ProfileIndexPost'
+import CreateComment from './components/comments/CreateComment'
 
 class App extends Component {
   constructor (props) {
@@ -128,6 +129,11 @@ class App extends Component {
             user={user}
             path='/users-list'
             render={() => <UsersList msgAlert={this.msgAlert} user={user} />}/>
+          <AuthenticatedRoute
+            user={user}
+            path='/posts/:id/comments'
+            render={() => <CreateComment msgAlert={this.msgAlert} user={user} />}
+          />
           <AuthenticatedRoute
             user={user}
             path='/profile'
