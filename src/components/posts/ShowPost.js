@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { deletePost, showPost } from '../../api/post'
+import { deletePost, showPost, updatePost } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 
 class ShowPost extends Component {
@@ -8,7 +8,10 @@ class ShowPost extends Component {
     super(props)
 
     this.state = {
-      post: null
+      title: '',
+      text: '',
+      likes: 0,
+      updated: false
     }
   }
 
@@ -16,7 +19,13 @@ class ShowPost extends Component {
     const { match, user, msgAlert } = this.props
 
     showPost(match.params.id, user)
-      .then((res) => this.setState({ post: res.data.posts }))
+      .then((res) => this.setState({
+        title: res.data.posts.title,
+        text: res.data.posts.text,
+        likes: res.data.posts.likes,
+        owner: res.data.posts.owner,
+        updated: true
+      }))
       .then(() => {
         msgAlert({
           heading: 'Viewing Post',
@@ -54,24 +63,50 @@ handleDelete = () => {
     })
 }
 
+upvote = () => {
+  this.setState(prevState => {
+    return { likes: prevState.likes + 1 }
+  })
+}
+
+// save the users likes when they leave the page
+componentWillUnmount () {
+  const { match, user, msgAlert } = this.props
+
+  updatePost(this.state, match.params.id, user)
+    .then(() => {
+      msgAlert({
+        heading: 'Liked',
+        message: '',
+        variant: 'success'
+      })
+    })
+    .catch((error) => {
+      msgAlert({
+        heading: 'Like fail',
+        message: 'Like error: ' + error.message,
+        variant: 'danger'
+      })
+    })
+}
+
 render () {
   if (this.state.post === null) {
     return 'Loading...'
   }
-  const { title, text, owner } = this.state.post
+  // const { title, text, owner } = this.state.post
   const { user, history, match } = this.props
   return (
     <>
       <h3>Viewing Post:</h3>
-      <h4>{title}</h4>
-      <p>{text}</p>
-      {user._id === owner && (
+      <h4>{this.state.title}</h4>
+      <p>{this.state.text}</p>
+      <p>bubbled {this.state.likes}x</p>
+      {user._id === this.state.owner && (
         <>
           <Button onClick={this.handleDelete}>Delete</Button>
-          <Button
-            onClick={() => history.push(`/posts/${match.params.id}/edit`)}>
-Update
-          </Button>
+          <Button onClick={() => history.push(`/posts/${match.params.id}/edit`)}>Update</Button>
+          <Button onClick= {this.upvote}>∘˚˳°</Button>
         </>
       )}
     </>

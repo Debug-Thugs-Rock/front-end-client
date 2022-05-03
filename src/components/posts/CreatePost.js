@@ -12,7 +12,8 @@ class CreatePost extends Component {
     this.state = {
       title: '',
       text: '',
-	owner: ''
+			owner: '',
+			likes: 0
     }
   }
 
