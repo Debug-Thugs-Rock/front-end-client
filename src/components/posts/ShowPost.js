@@ -71,23 +71,9 @@ upvote = () => {
 
 // save the users likes when they leave the page
 componentWillUnmount () {
-  const { match, user, msgAlert } = this.props
+  const { match, user } = this.props
 
   updatePost(this.state, match.params.id, user)
-    .then(() => {
-      msgAlert({
-        heading: 'Liked',
-        message: '',
-        variant: 'success'
-      })
-    })
-    .catch((error) => {
-      msgAlert({
-        heading: 'Like fail',
-        message: 'Like error: ' + error.message,
-        variant: 'danger'
-      })
-    })
 }
 
 render () {
