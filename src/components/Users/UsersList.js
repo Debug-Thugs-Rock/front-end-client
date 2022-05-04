@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { indexUsers } from '../../api/users'
 import { Bubble } from '../Style/Bubble'
 
@@ -12,25 +12,25 @@ class UsersList extends Component {
   }
 
   componentDidMount () {
-    const { user } = this.props
+    const { user, msgAlert } = this.props
 
     indexUsers(user)
       .then((res) => this.setState({ users: res.data.users }))
       .then(console.log(this.users))
-      // .then(() => {
-      //   msgAlert({
-      //     heading: 'Welcome to Bubble Home!',
-      //     message: 'Look at allll those users',
-      //     variant: 'success'
-      //   })
-      // })
-      // .catch((error) => {
-      //   msgAlert({
-      //     heading: 'Index Failed',
-      //     message: 'Index error:' + error.message,
-      //     variant: 'danger'
-      //   })
-      // })
+      .then(() => {
+        msgAlert({
+          heading: 'Welcome to Bubble Home!',
+          message: 'Look at allll those users',
+          variant: 'success'
+        })
+      })
+      .catch((error) => {
+        msgAlert({
+          heading: 'Index Failed',
+          message: 'Index error:' + error.message,
+          variant: 'danger'
+        })
+      })
   }
 
   render () {
@@ -48,9 +48,11 @@ class UsersList extends Component {
     // eslint-disable-next-line array-callback-return
       userJSX = users.map((user) => (
         <>
-          <Bubble key={user._id} >
-            <h3>{user.email}</h3>
-          </Bubble>
+          <Link to={'/profile'}>
+            <Bubble key={user._id} >
+              <h3>{user.email}</h3>
+            </Bubble>
+          </Link>
         </>
       ))
     }

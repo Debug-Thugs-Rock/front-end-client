@@ -4,23 +4,6 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import { Bubble } from '../Style/Bubble'
 
-// const Bubble = styled.div`
-// border: 1px solid red;
-//   background-color:#fff;
-//   padding: 20px;
-//   border-radius: 30px;
-//   min-width: 40px;
-//   max-width: 220px;
-//   min-height: 40px;
-//   margin: 20px;
-//   align-items:center;
-//   text-align:center;
-//   &:before,
-//   &:hover {
-//     border: 5px solid purple;
-//   }
-// `
-
 class IndexPost extends Component {
   constructor (props) {
     super(props)
