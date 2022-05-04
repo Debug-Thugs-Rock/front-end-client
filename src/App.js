@@ -19,6 +19,7 @@ import CreateComment from './components/comments/CreateComment'
 import UsersList from './components/UsersList/UsersList'
 import ProfileIndexPost from './components/posts/ProfileIndexPost'
 import CreateComment from './components/comments/CreateComment'
+import UsersList from './components/UsersList/UsersList'
 
 class App extends Component {
   constructor (props) {
