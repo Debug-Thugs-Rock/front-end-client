@@ -2,6 +2,46 @@ import React, { Component } from 'react'
 import { indexPosts, deletePost } from '../../api/post'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import styled from 'styled-components'
+
+// const bubbleStyle = {
+//   border: '1px solid red',
+//   // backgroundColor: '#fff',
+//   padding: '20px',
+//   borderRadius: '30px',
+//   // minWidth: '40px',
+//   // maxWidth: '220px',
+//   // minHeight: '40px',
+//   margin: '20px',
+//   position: 'relative',
+//   // alignItems: 'center',
+//   // justifyContent: 'center',
+//   textAlign: 'center',
+//   '&:after': {
+//     content: '\'\'',
+//     border: '30px solid blue',
+//     width: '100px',
+//     height: '100px'
+//   }
+// }
+
+const Bubble = styled.div`
+border: 1px solid red;
+  background-color:#fff;
+  padding: 20px;
+  border-radius: 30px;
+  min-width: 40px;
+  max-width: 220px;
+  min-height: 40px;
+  margin: 20px;
+  align-items:center;
+  text-align:center;
+  &:before,
+  &:hover {
+    border: 5px solid purple;
+  }
+  
+`
 
 class IndexPost extends Component {
   constructor (props) {
@@ -81,6 +121,7 @@ render () {
     <>
       <h3>Bubble Feed</h3>
       <ul>{postJSX}</ul>
+
     </>
   )
 }
