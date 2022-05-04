@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { deletePost, showPost, updatePost, deleteComment } from '../../api/post'
+import { deletePost, showPost, deleteComment, updateLikes } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 
 class ShowPost extends Component {
@@ -94,7 +94,7 @@ commentDelete = (commentId) => {
 // save the users likes when they leave the page
 componentWillUnmount () {
   const { match, user } = this.props
-  updatePost(this.state, match.params.id, user)
+  updateLikes(this.state, match.params.id, user)
 }
 
 render () {

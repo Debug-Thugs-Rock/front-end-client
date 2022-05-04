@@ -56,6 +56,19 @@ export const updatePost = (data, id, user) => {
   })
 }
 
+export const updateLikes = (data, id, user) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/posts/' + id + '/likes',
+    data: {
+      post: data
+    },
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+
 export const createComment = (data, id, user) => {
   return axios({
     method: 'PATCH',
