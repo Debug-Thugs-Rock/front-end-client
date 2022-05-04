@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { deletePost, showPost, updatePost } from '../../api/post'
+import { deletePost, showPost, updatePost, deleteComment } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 
 class ShowPost extends Component {
@@ -70,6 +70,27 @@ upvote = () => {
   })
 }
 
+commentDelete = (commentId) => {
+  const { match, user, msgAlert } = this.props
+
+  const commentID = { commentId: commentId }
+  deleteComment(commentID, match.params.id, user)
+    .then(() => {
+      msgAlert({
+        heading: 'Comment Deleted',
+        message: 'bye bye',
+        variant: 'success'
+      })
+    })
+    .catch((error) => {
+      msgAlert({
+        heading: 'Create Delete Fail',
+        message: 'Comment Delete error: ' + error.message,
+        variant: 'danger'
+      })
+    })
+}
+
 // save the users likes when they leave the page
 componentWillUnmount () {
   const { match, user } = this.props
@@ -87,8 +108,9 @@ render () {
       <h3>Viewing Post:</h3>
       <h4>{this.state.title}</h4>
       <p>{this.state.text}</p>
-      <p>Comments:</p>
-      { this.state.commentCopy?.map(comment => <div key= { comment._id }>{ comment.comment }</div>)}
+      <ul>
+        { this.state.commentCopy?.map(comment => <li key= { comment._id } data-id= {comment._id}>{ comment.comment }  <button type="button" className="btn btn-secondary btn-sm" onClick={ () => this.commentDelete(comment._id) }>｡∘oOo</button></li>)}
+      </ul>
 
       <p>bubbled {this.state.likes}x</p>
       {user._id === this.state.owner && (

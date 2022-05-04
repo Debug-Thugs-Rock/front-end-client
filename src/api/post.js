@@ -68,3 +68,16 @@ export const createComment = (data, id, user) => {
     }
   })
 }
+
+export const deleteComment = (data, id, user) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/posts/' + id + '/commentdelete',
+    data: {
+      post: data
+    },
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}

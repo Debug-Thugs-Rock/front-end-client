@@ -56,7 +56,6 @@ handleDelete = () => {
 
 render () {
   const { posts } = this.state
-  console.log(this.state)
 
   if (posts === null) {
     return 'Loading...'
