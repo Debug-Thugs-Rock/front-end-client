@@ -68,14 +68,14 @@ render () {
     // eslint-disable-next-line array-callback-return
     postJSX = posts.map((post) => (
       <div key={post._id}>
-        <h3>{this.props.user.username}</h3>
+        <h3>{post.owner}</h3>
         <h4>{post.title}</h4>
         <p>{post.text}</p>
         <>
           <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
         </>
       </div>
-    ))
+    )).reverse()
   }
   return (
     <>

@@ -76,7 +76,7 @@ render () {
           <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
         </>
       </div>
-    ))
+    )).reverse()
   }
   return (
     <>

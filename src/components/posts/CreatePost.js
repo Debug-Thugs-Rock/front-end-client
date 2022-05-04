@@ -25,10 +25,8 @@ class CreatePost extends Component {
 
 	handleSubmit = (event) => {
 	event.preventDefault()
-	event.target.reset()
 
 	const { user, msgAlert } = this.props
-	console.log(this.state)
 
 	createPost(this.state, user)
     .then(() => {
@@ -45,10 +43,16 @@ class CreatePost extends Component {
 	variant: 'danger'
 	})
     })
+	this.setState({
+			title: '',
+			text: ''
+	})
     }
 
 	render () {
 	return (
+		<>
+		<h4>{this.props.user.username}</h4>
  <Form onSubmit={this.handleSubmit}>
 	      <Form.Group controlId='title'>
 	        <Form.Label>New Post</Form.Label>
@@ -72,6 +76,7 @@ onChange={this.handleChange}
 	      </Form.Group>
 	      <Button type='submit'>Submit</Button>
 	    </Form>
+		</>
  )
 	}
 }
