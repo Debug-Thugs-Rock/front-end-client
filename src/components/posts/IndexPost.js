@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { indexPosts, deletePost } from '../../api/post'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import { Bubble } from '../Style/Bubble'
 
 class IndexPost extends Component {
   constructor (props) {
@@ -67,20 +68,21 @@ render () {
   } else {
     // eslint-disable-next-line array-callback-return
     postJSX = posts.map((post) => (
-      <div key={post._id}>
+      <Bubble key={post._id}>
         <h3>{post.owner?.username}</h3>
         <h4>{post.title}</h4>
         <p>{post.text}</p>
         <>
           <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
         </>
-      </div>
+      </Bubble>
     )).reverse()
   }
   return (
     <>
       <h3>Bubble Feed</h3>
       <ul>{postJSX}</ul>
+
     </>
   )
 }

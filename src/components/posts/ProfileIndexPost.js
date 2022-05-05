@@ -67,7 +67,7 @@ render () {
   } else {
     // eslint-disable-next-line array-callback-return
     // eslint-disable-next-line eqeqeq
-    postJSX = posts.filter(post => post.owner == this.props.user._id).map((post) => (
+    postJSX = posts.filter(post => post.owner._id == this.props.user._id).map((post) => (
       <div key={post._id}>
         <h3>{this.props.user.username}</h3>
         <h4>{post.title}</h4>
@@ -80,7 +80,7 @@ render () {
   }
   return (
     <>
-      <h3>Your Bubble Feed</h3>
+      <h3>Your Bubble Feedstest</h3>
       <ul>{postJSX}</ul>
     </>
   )
