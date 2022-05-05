@@ -24,11 +24,11 @@ Profile{' '}
     <NavLink to='/change-password' style={styleBlock} className='nav-link'>
 Change Password
     </NavLink>
-    <NavLink to='/sign-out' style={styleBlock} className='nav-link'>
-Sign Out
-    </NavLink>
     <NavLink to='/users-list' style={styleBlock} className='nav-link'>
 All Users
+    </NavLink>
+    <NavLink to='/sign-out' style={styleBlock} className='nav-link'>
+Sign Out
     </NavLink>
   </Fragment>
 )
