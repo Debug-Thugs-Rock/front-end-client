@@ -7,6 +7,11 @@ import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAler
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
+
 class ChangePassword extends Component {
   constructor (props) {
     super(props)
@@ -51,7 +56,7 @@ render () {
 
   return (
     <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+      <div style={ styleBlock} className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Change Password</h3>
         <Form onSubmit={this.onChangePassword}>
           <Form.Group controlId='oldPassword'>
@@ -76,7 +81,7 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='info' style={ styleBlock} type='submit'>Submit</Button>
         </Form>
       </div>
     </div>

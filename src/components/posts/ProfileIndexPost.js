@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 import { indexPosts, deletePost } from '../../api/post'
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
+
+// style block for post divs
+const postStyle = {
+  background: '#0dcaf0',
+  borderRadius: '20px',
+  padding: '1.5em',
+  margin: '10px',
+  color: '#03045e'
+}
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
 
 class ProfileIndexPost extends Component {
   constructor (props) {
@@ -68,12 +80,12 @@ render () {
     // eslint-disable-next-line array-callback-return
     // eslint-disable-next-line eqeqeq
     postJSX = posts.filter(post => post.owner._id == this.props.user._id).map((post) => (
-      <div key={post._id}>
+      <div style={ postStyle} key={post._id}>
         <h3>{this.props.user.username}</h3>
         <h4>{post.title}</h4>
         <p>{post.text}</p>
         <>
-          <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
+          <Link to={`/posts/${post._id}`}><button type="button" style={ styleBlock} className="btn btn-light" >View Post</button></Link>
         </>
       </div>
     )).reverse()

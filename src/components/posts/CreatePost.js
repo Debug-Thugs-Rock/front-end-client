@@ -2,8 +2,12 @@
 /* eslint-disable no-tabs */
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { createPost } from '../../api/post'
+
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
 
 class CreatePost extends Component {
   constructor (props) {
@@ -52,10 +56,10 @@ class CreatePost extends Component {
 	render () {
 	return (
 		<>
-		<h4>{this.props.user.username}</h4>
+		<h4 style={ styleBlock}>{this.props.user.username}</h4>
  <Form onSubmit={this.handleSubmit}>
 	      <Form.Group controlId='title'>
-	        <Form.Label>New Post</Form.Label>
+	        <Form.Label style={ styleBlock}>New Post</Form.Label>
 	        <Form.Control
  required
 name='title'
@@ -65,7 +69,7 @@ placeholder='New Post Subject'
   />
 	      </Form.Group>
 	      <Form.Group controlId='text'>
-	        <Form.Label>Whats on your mind? </Form.Label>
+	        <Form.Label style={ styleBlock}>Whats on your mind? </Form.Label>
 	        <Form.Control
  required
  name='text'
@@ -74,7 +78,7 @@ value={this.state.text}
 onChange={this.handleChange}
   />
 	      </Form.Group>
-	      <Button type='submit'>Submit</Button>
+	      <button type="submit" className="btn btn-secondary">Submit</button>
 	    </Form>
 		</>
  )

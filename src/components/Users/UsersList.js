@@ -3,6 +3,17 @@ import { withRouter, Link } from 'react-router-dom'
 import { indexUsers } from '../../api/users'
 import { Bubble } from '../Style/Bubble'
 
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
+
+// style={ styleLinks} for links
+const styleLinks = {
+  textDecoration: 'none',
+  color: 'white'
+}
+
 class UsersList extends Component {
   constructor (props) {
     super(props)
@@ -49,9 +60,9 @@ class UsersList extends Component {
     // eslint-disable-next-line array-callback-return
       userJSX = users.map((user) => (
         <>
-          <Link to={`/profile/${user._id}`}>
+          <Link style={ styleLinks} to={`/profile/${user._id}`}>
             <Bubble key={user._id} >
-              <h3>{user.email}</h3>
+              <h3>{user.username}</h3>
             </Bubble>
           </Link>
         </>
@@ -59,9 +70,10 @@ class UsersList extends Component {
     }
     return (
       <>
-        <h3>Bubble Feed</h3>
-        <ul>{userJSX}</ul>
-
+        <div style={ styleBlock}>
+          <h3 >Bubble Feed</h3>
+          <ul>{userJSX}</ul>
+        </div>
       </>
     )
   }

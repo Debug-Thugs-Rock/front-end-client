@@ -7,6 +7,11 @@ import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
+
 class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -53,7 +58,7 @@ render () {
   const { email, username, password, passwordConfirmation } = this.state
 
   return (
-    <div className='row'>
+    <div style={ styleBlock} className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign Up</h3>
         <Form onSubmit={this.onSignUp}>
@@ -101,7 +106,7 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit
+          <Button style={ styleBlock} variant='info' type='submit'>Submit
           </Button>
         </Form>
       </div>

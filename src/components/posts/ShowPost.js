@@ -3,6 +3,11 @@ import { withRouter } from 'react-router-dom'
 import { deletePost, showPost, deleteComment, updateLikes } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
+
 class ShowPost extends Component {
   constructor (props) {
     super(props)
@@ -105,22 +110,24 @@ render () {
   const { user, history, match } = this.props
   return (
     <>
-      <h3>Viewing Post:</h3>
-      <h4>{this.state.title}</h4>
-      <p>{this.state.text}</p>
-      <ul>
-        { this.state.commentCopy?.map(comment => <li key= { comment._id } data-id= {comment._id}>{ comment.comment }  <button type="button" className="btn btn-secondary btn-sm" onClick={ () => this.commentDelete(comment._id) }>｡∘oOo</button></li>)}
-      </ul>
+      <div style={ styleBlock}>
+        <h3>Viewing Post:</h3>
+        <h4>{this.state.title}</h4>
+        <p>{this.state.text}</p>
+        <ul>
+          { this.state.commentCopy?.map(comment => <li key= { comment._id } data-id= {comment._id}>{ comment.comment }  <button type="button" className="btn btn-secondary btn-sm" onClick={ () => this.commentDelete(comment._id) }>｡∘oOo</button></li>)}
+        </ul>
 
-      <p>bubbled {this.state.likes}x</p>
-      {user._id === this.state.owner && (
-        <>
-          <Button onClick={this.handleDelete}>Delete</Button>
-          <Button onClick={() => history.push(`/posts/${match.params.id}/edit`)}>Update</Button>
-        </>
-      )}
-      <Button onClick={() => history.push(`/posts/${match.params.id}/comments`)}>Comment</Button>
-      <Button onClick= {this.upvote}>∘˚˳°</Button>
+        <p>bubbled {this.state.likes}x</p>
+        {user._id === this.state.owner && (
+          <>
+            <Button onClick={this.handleDelete}>Delete</Button>
+            <Button onClick={() => history.push(`/posts/${match.params.id}/edit`)}>Update</Button>
+          </>
+        )}
+        <Button onClick={() => history.push(`/posts/${match.params.id}/comments`)}>Comment</Button>
+        <Button onClick= {this.upvote}>∘˚˳°</Button>
+      </div>
     </>
   )
 }

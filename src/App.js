@@ -17,6 +17,7 @@ import UpdatePost from './components/posts/UpdatePost'
 import CreateComment from './components/comments/CreateComment'
 import UsersList from './components/Users/UsersList'
 import ShowUser from './components/Users/ShowUser'
+import ProfileIndexPost from './components/posts/ProfileIndexPost'
 
 class App extends Component {
   constructor (props) {
@@ -130,6 +131,13 @@ class App extends Component {
             path='/profile/:id'
             render={() => (
               <ShowUser msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/profile/'
+            render={() => (
+              <ProfileIndexPost msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>

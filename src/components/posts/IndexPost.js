@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
 import { indexPosts, deletePost } from '../../api/post'
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
-import { Bubble } from '../Style/Bubble'
+
+// style block for post divs
+const postStyle = {
+  background: '#0dcaf0',
+  borderRadius: '20px',
+  padding: '1.5em',
+  margin: '10px',
+  color: '#03045e'
+}
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
 
 class IndexPost extends Component {
   constructor (props) {
@@ -68,19 +79,19 @@ render () {
   } else {
     // eslint-disable-next-line array-callback-return
     postJSX = posts.map((post) => (
-      <Bubble key={post._id}>
-        <h3>{post.owner?.username}</h3>
-        <h4>{post.title}</h4>
+      <div style={postStyle} key={post._id}>
+        <h1>{post.owner?.username}</h1>
+        <h5>{post.title}</h5>
         <p>{post.text}</p>
         <>
-          <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
+          <Link to={`/posts/${post._id}`}><button type="button" style={ styleBlock} className="btn btn-light" >View Post</button></Link>
         </>
-      </Bubble>
+      </div>
     )).reverse()
   }
   return (
     <>
-      <h3>Bubble Feed</h3>
+      <h3 style={ styleBlock}>Bubble Feed</h3>
       <ul>{postJSX}</ul>
 
     </>

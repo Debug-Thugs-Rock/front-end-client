@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 export const Bubble = styled.div`
- border: 1px solid red;
-  background-color:#fff;
+ border: 3px solid #03045e;
+  background-color:#0dcaf0;
   padding:20px;
   border-radius:100px;
   min-width:40px;
@@ -18,9 +18,9 @@ export const Bubble = styled.div`
   text-align:center;
   &:before,
   &:after {
-      border: 1px solid red;
+      border: 1px solid #03045e;
       content:"";
-  background-color:#fff;
+  background-color:#0dcaf0;
   border-radius:50%;
   display:block;
   position:absolute;
