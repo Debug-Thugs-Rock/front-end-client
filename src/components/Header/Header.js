@@ -5,7 +5,19 @@ import { Link, NavLink } from 'react-router-dom'
 
 // style={ styleBlock}
 const styleBlock = {
-  color: '#03045e'
+  color: '#03045e',
+  margin: '0px 10px'
+}
+
+const signOutBlockRight = {
+  color: '#03045e',
+  position: 'absolute',
+  right: '10px'
+}
+const changePasswordBlockRight = {
+  color: '#03045e',
+  position: 'absolute',
+  right: '100px'
 }
 const welcomeStyle = {
   color: '#fff',
@@ -16,18 +28,18 @@ const welcomeStyle = {
 const authenticatedOptions = (
   <Fragment>
     <NavLink to='/home' style={styleBlock} className='nav-link'>
-Home{' '}
+ Home {' '}
     </NavLink>
     <NavLink to='/profile' style={styleBlock} className='nav-link'>
-Profile{' '}
-    </NavLink>
-    <NavLink to='/change-password' style={styleBlock} className='nav-link'>
-Change Password
+ Profile{' '}
     </NavLink>
     <NavLink to='/users-list' style={styleBlock} className='nav-link'>
-All Users
+ All Users
     </NavLink>
-    <NavLink to='/sign-out' style={styleBlock} className='nav-link'>
+    <NavLink to='/change-password' style={changePasswordBlockRight} className='nav-link'>
+Change Password
+    </NavLink>
+    <NavLink to='/sign-out' style={signOutBlockRight} className='nav-link'>
 Sign Out
     </NavLink>
   </Fragment>

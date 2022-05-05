@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
+import Welcome from './components/auth/Welcome'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
@@ -64,6 +65,12 @@ class App extends Component {
           />
         ))}
         <main className='container'>
+          <Route
+            exact path='/'
+            render={() => (
+              <Welcome/>
+            )}
+          />
           <Route
             path='/sign-up'
             render={() => (
