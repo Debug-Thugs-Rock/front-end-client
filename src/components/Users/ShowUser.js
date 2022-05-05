@@ -51,7 +51,7 @@ class ShowUser extends Component {
       postJSX = posts.filter(post => post.owner._id == this.props.match.params.id).map((post) => (
 
         <div key={post._id}>
-          <h3>{post.owner.email}</h3>
+          <h3>{post.owner.username}</h3>
           <h4>{post.title}</h4>
           <p>{post.text}</p>
           <>

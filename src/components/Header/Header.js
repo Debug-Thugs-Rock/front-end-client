@@ -15,13 +15,20 @@ const welcomeStyle = {
 
 const authenticatedOptions = (
   <Fragment>
-    <NavLink to='/home' style={ styleBlock} className='nav-link'>Home </NavLink>
-    <NavLink to='/profile' style={ styleBlock} className='nav-link'>Profile </NavLink>
-    <NavLink to='/change-password' style={ styleBlock} className='nav-link'>Change Password
+    <NavLink to='/home' style={styleBlock} className='nav-link'>
+Home{' '}
     </NavLink>
-    <NavLink to='/sign-out' style={ styleBlock} className='nav-link'>Sign Out
+    <NavLink to='/profile' style={styleBlock} className='nav-link'>
+Profile{' '}
     </NavLink>
-    <NavLink to='/users-list' style={ styleBlock} className='nav-link'>All Users
+    <NavLink to='/change-password' style={styleBlock} className='nav-link'>
+Change Password
+    </NavLink>
+    <NavLink to='/sign-out' style={styleBlock} className='nav-link'>
+Sign Out
+    </NavLink>
+    <NavLink to='/users-list' style={styleBlock} className='nav-link'>
+All Users
     </NavLink>
   </Fragment>
 )

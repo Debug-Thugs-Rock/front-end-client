@@ -135,7 +135,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/profile/'
+            exact path='/profile/'
             render={() => (
               <ProfileIndexPost msgAlert={this.msgAlert} user={user} />
             )}
