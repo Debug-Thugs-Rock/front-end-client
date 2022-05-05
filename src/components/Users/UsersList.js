@@ -5,7 +5,8 @@ import { Bubble } from '../Style/Bubble'
 
 // style={ styleBlock} for username width
 const styleBlock = {
-  maxWidth: '200px'
+  maxWidth: '200px',
+  wordWrap: 'break-word'
 }
 
 // style={ styleLinks} for links
