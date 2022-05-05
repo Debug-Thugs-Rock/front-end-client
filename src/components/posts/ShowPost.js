@@ -3,8 +3,12 @@ import { withRouter } from 'react-router-dom'
 import { deletePost, showPost, deleteComment, updateLikes } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 
-// style={ styleBlock}
-const styleBlock = {
+// style block for post divs
+const postStyle = {
+  background: '#0dcaf0',
+  borderRadius: '20px',
+  padding: '1.5em',
+  margin: '10px',
   color: '#03045e'
 }
 
@@ -110,7 +114,7 @@ render () {
   const { user, history, match } = this.props
   return (
     <>
-      <div style={ styleBlock}>
+      <div style={ postStyle}>
         <h3>Viewing Post:</h3>
         <h4>{this.state.title}</h4>
         <p>{this.state.text}</p>

@@ -3,9 +3,9 @@ import { withRouter, Link } from 'react-router-dom'
 import { indexUsers } from '../../api/users'
 import { Bubble } from '../Style/Bubble'
 
-// style={ styleBlock}
+// style={ styleBlock} for username width
 const styleBlock = {
-  color: '#03045e'
+  maxWidth: '200px'
 }
 
 // style={ styleLinks} for links
@@ -62,7 +62,7 @@ class UsersList extends Component {
         <>
           <Link style={ styleLinks} to={`/profile/${user._id}`}>
             <Bubble key={user._id} >
-              <h3>{user.username}</h3>
+              <h3 style={ styleBlock}>{user.username}</h3>
             </Bubble>
           </Link>
         </>
@@ -70,8 +70,8 @@ class UsersList extends Component {
     }
     return (
       <>
-        <div style={ styleBlock}>
-          <h3 >Bubble Feed</h3>
+        <div >
+          <h3 >Find Bubble Feed</h3>
           <ul>{userJSX}</ul>
         </div>
       </>

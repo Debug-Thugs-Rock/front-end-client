@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { indexPosts } from '../../api/post'
-import Button from 'react-bootstrap/Button'
+
+// style block for post divs
+const postStyle = {
+  background: '#0dcaf0',
+  borderRadius: '20px',
+  padding: '1.5em',
+  margin: '10px',
+  color: '#03045e'
+}
+// style={ styleBlock}
+const styleBlock = {
+  color: '#03045e'
+}
 
 class ShowUser extends Component {
   constructor (props) {
@@ -45,24 +57,23 @@ class ShowUser extends Component {
     if (posts.length === 0) {
       postJSX = 'No posts, create some'
     } else {
-      console.log(posts)
+      // console.log(posts)
       // eslint-disable-next-line array-callback-return
       // eslint-disable-next-line eqeqeq
       postJSX = posts.filter(post => post.owner._id == this.props.match.params.id).map((post) => (
-
-        <div key={post._id}>
+        <div style={ postStyle} key={post._id}>
           <h3>{post.owner.username}</h3>
           <h4>{post.title}</h4>
           <p>{post.text}</p>
           <>
-            <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
+            <Link to={`/posts/${post._id}`}><button type="button" style={ styleBlock} className="btn btn-light" >View Post</button></Link>
           </>
         </div>
       )).reverse()
     }
     return (
       <>
-        <h3>Bubble Feed</h3>
+        <h3 style={ styleBlock}>Bubble Feed</h3>
         <ul>{postJSX}</ul>
       </>
     )

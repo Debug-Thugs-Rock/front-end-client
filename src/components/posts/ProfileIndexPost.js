@@ -92,7 +92,7 @@ render () {
   }
   return (
     <>
-      <h3>Your Bubble Feed</h3>
+      <h3 style={ styleBlock} >Your Bubble Feed</h3>
       <ul>{postJSX}</ul>
     </>
   )
