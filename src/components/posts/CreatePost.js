@@ -5,10 +5,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { createPost } from '../../api/post'
 
-const bubbleStyle = {
-	color: 'red'
-}
-
 class CreatePost extends Component {
   constructor (props) {
     super(props)

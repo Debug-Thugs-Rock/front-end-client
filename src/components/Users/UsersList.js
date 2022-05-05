@@ -40,6 +40,7 @@ class UsersList extends Component {
     if (users === null) {
       return 'Loading...'
     }
+    // const { match } = this.props
 
     let userJSX
     if (users.length === 0) {
@@ -48,7 +49,7 @@ class UsersList extends Component {
     // eslint-disable-next-line array-callback-return
       userJSX = users.map((user) => (
         <>
-          <Link to={'/profile'}>
+          <Link to={`/profile/${user._id}`}>
             <Bubble key={user._id} >
               <h3>{user.email}</h3>
             </Bubble>

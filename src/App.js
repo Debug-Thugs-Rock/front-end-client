@@ -14,9 +14,9 @@ import CreatePost from './components/posts/CreatePost'
 import IndexPost from './components/posts/IndexPost'
 import ShowPost from './components/posts/ShowPost'
 import UpdatePost from './components/posts/UpdatePost'
-import ProfileIndexPost from './components/posts/ProfileIndexPost'
 import CreateComment from './components/comments/CreateComment'
 import UsersList from './components/Users/UsersList'
+import ShowUser from './components/Users/ShowUser'
 
 class App extends Component {
   constructor (props) {
@@ -127,9 +127,9 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/profile'
+            path='/profile/:id'
             render={() => (
-              <ProfileIndexPost msgAlert={this.msgAlert} user={user} />
+              <ShowUser msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>

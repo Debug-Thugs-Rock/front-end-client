@@ -1,50 +1,69 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import { showUser } from '../../api/users'
+import { withRouter, Link } from 'react-router-dom'
+import { indexPosts } from '../../api/post'
+import Button from 'react-bootstrap/Button'
 
 class ShowUser extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      posts: null
     }
   }
 
   componentDidMount () {
-    const { match, user, msgAlert } = this.props
-    showUser(match.params.id, user)
-      .then((res) =>
-      // this.setState({
+    const { user, msgAlert } = this.props
 
-      // })
-        console.log(res)
-      )
+    indexPosts(user)
+      .then((res) => this.setState({ posts: res.data.posts }))
       .then(() => {
         msgAlert({
-          heading: 'Viewing Post',
-          message: 'Woot success',
+          heading: 'Welcome to Bubble Home!',
+          message: 'Look at allll those Posts',
           variant: 'success'
         })
       })
       .catch((error) => {
         msgAlert({
-          heading: 'View failed',
-          message: 'Error message: ' + error.message,
+          heading: 'Index Failed',
+          message: 'Index error:' + error.message,
           variant: 'danger'
         })
       })
   }
 
   render () {
-    // if (this.state.post === null) {
-    // return 'Loading...'
-    // }
-    // const { title, text, owner } = this.state.post
-    // const { user, history, match } = this.props
+    const { posts } = this.state
+
+    if (posts === null) {
+      return 'Loading...'
+    }
+
+    let postJSX
+    if (posts.length === 0) {
+      postJSX = 'No posts, create some'
+    } else {
+      console.log(posts)
+      // eslint-disable-next-line array-callback-return
+      // eslint-disable-next-line eqeqeq
+      postJSX = posts.filter(post => post.owner._id == this.props.match.params.id).map((post) => (
+
+        <div key={post._id}>
+          <h3>{post.owner.email}</h3>
+          <h4>{post.title}</h4>
+          <p>{post.text}</p>
+          <>
+            <Link to={`/posts/${post._id}`}><Button>View Post</Button></Link>
+          </>
+        </div>
+      )).reverse()
+    }
     return (
       <>
-        <h1>Profile</h1>
+        <h3>Bubble Feed</h3>
+        <ul>{postJSX}</ul>
       </>
     )
   }
