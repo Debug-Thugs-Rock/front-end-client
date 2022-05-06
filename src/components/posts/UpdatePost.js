@@ -23,10 +23,11 @@ class UpdatePost extends Component {
 handleSubmit = (event) => {
   event.preventDefault()
 
-  const { match, user, msgAlert } = this.props
+  const { match, user, msgAlert, history } = this.props
 
   updatePost(this.state, match.params.id, user)
     .then(() => this.setState({ updated: true }))
+    .then(() => history.push('/posts/' + match.params.id))
     .then(() => {
       msgAlert({
         heading: 'Post Updated',
@@ -45,7 +46,7 @@ handleSubmit = (event) => {
 
 render () {
   if (this.state.updated) {
-    return <Redirect to={'/home/'} />
+    return <Redirect to={'/posts/'} />
   }
 
   return (
