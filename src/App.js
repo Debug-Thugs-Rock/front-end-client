@@ -100,11 +100,18 @@ class App extends Component {
             render={() => <CreatePost msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
+            exact
+            user={user}
+            path='/posts'
+            render={() => <IndexPost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
             user={user}
             path='/home'
             render={() => <IndexPost msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
+            exact
             user={user}
             path='/posts/:id'
             render={() => <ShowPost msgAlert={this.msgAlert} user={user} />}
@@ -129,13 +136,12 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             path='/profile/:id'
-            render={() => (
-              <ShowUser msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <ShowUser msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
-            exact path='/profile/'
+            exact
+            path='/profile/'
             render={() => (
               <ProfileIndexPost msgAlert={this.msgAlert} user={user} />
             )}
