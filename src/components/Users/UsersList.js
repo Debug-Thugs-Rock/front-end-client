@@ -28,7 +28,6 @@ class UsersList extends Component {
 
     indexUsers(user)
       .then((res) => this.setState({ users: res.data.users }))
-      .then(console.log(this.users))
       .then(() => {
         msgAlert({
           heading: 'Welcome to Bubble Home!',
@@ -47,7 +46,6 @@ class UsersList extends Component {
 
   render () {
     const { users } = this.state
-    console.log(this.state)
 
     if (users === null) {
       return 'Loading...'
