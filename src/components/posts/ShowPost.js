@@ -80,7 +80,7 @@ upvote = () => {
 }
 
 commentDelete = (commentId) => {
-  const { match, user, msgAlert } = this.props
+  const { match, user, msgAlert, history } = this.props
 
   const commentID = { commentId: commentId }
   deleteComment(commentID, match.params.id, user)
@@ -91,6 +91,7 @@ commentDelete = (commentId) => {
         variant: 'success'
       })
     })
+    .then(history.push('/home'))
     .catch((error) => {
       msgAlert({
         heading: 'Create Delete Fail',
